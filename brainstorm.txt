@@ -1,0 +1,19 @@
+Requirements:
+    - use db.json file using json-server
+    - run on single html file with no relaoding
+    - 3 types of addEventListener("click", "submit", other...)
+    - 1 array iteration using one of these [map, forEach, filter]
+
+
+
+Contacts list
+    -db.json hold contacts
+        name
+        title
+        phone number
+        address
+    - click to remove contact
+    - add contact with information
+    - hover to enable edit contact
+
+    - find contacts
