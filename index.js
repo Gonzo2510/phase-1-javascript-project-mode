@@ -1,4 +1,4 @@
-
+// json-server --watch db.json
 
 function addContact(){
     const tbody = document.querySelector("tbody")
