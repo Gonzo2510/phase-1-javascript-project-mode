@@ -1,6 +1,6 @@
 // json-server --watch db.json
 
-function addContactToDOM(name = 'Jacob', title = "Teacher", email = "jagonz@live.com", phone = "8324037153"){
+function addContactToDOM(name, title, email, phone){
     const tbody = document.querySelector("tbody")
     const tr = document.createElement('tr')
     const tb1 = document.createElement('td')
@@ -48,29 +48,25 @@ function addContactBtn(){
         let fEmail = e.target['2'].value
         let fPhone = e.target['3'].value
     
+        let newContact = {
+            name: fName,
+            occupation: fTitle,
+            email: fEmail,
+            phone: fPhone
+        }
+
         fetch('http://localhost:3000/contacts', {
             method: 'POST',
-            body: JSON.stringify({
-                name: fName,
-                occupation: fTitle,
-                email: fEmail,
-                phone: fPhone
-            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newContact)
         })
         .then(response => response.json())
-        .then(user => {
-            console.log(user)
-            addContactToDOM(fName,fTitle,fEmail,fPhone)
-        })
+        .then(user => addContactToDOM(fName,fTitle,fEmail,fPhone))
     })
 };
-
-
-
-
-
-
-
 
 
 importContacts()
