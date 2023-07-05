@@ -1,25 +1,28 @@
 {
-    "contacts": [
-        {
-          "id" : 1,
-          "name": "Jacob Gonzales",
-          "occupation": "Teacher",
-          "email": "Jacob@email.com",
-          "phone": "(281) 222-1234"
-        },
-        {
-          "id" : 2,
-          "name": "Ally Herebic",
-          "occupation": "Cheif Of Staff",
-          "email": "Ally@example.com",
-          "phone": "(123) 456-7890"
-        },
-        {
-          "id" : 3,
-          "name": "testing Herebic",
-          "occupation": "Cheif Of Staff",
-          "email": "Ally@example.com",
-          "phone": "(123) 456-7890"
-        }
-      ]
-  }
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Jacob Gonzales",
+      "occupation": "Teacher",
+      "email": "Jacob@email.com",
+      "phone": "(281) 222-1234"
+    },
+    {
+      "id": 2,
+      "name": "Ally Herebic",
+      "occupation": "Cheif Of Staff",
+      "email": "Ally@example.com",
+      "phone": "(123) 456-7890"
+    },
+    {
+      "id": 3,
+      "name": "test",
+      "occupation": "job",
+      "email": "email@example.com",
+      "phone": "(000) 000-0000"
+    },
+    {
+      "id": 4
+    }
+  ]
+}
