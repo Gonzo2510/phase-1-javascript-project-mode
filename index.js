@@ -68,6 +68,17 @@ function addContactBtn(){
     })
 };
 
+function find(){
+    let findForm = document.getElementById("find_form")
+    findForm.addEventListener("submit", e => {
+        e.preventDefault()
+        let userSearch = e.target['0'].value
+
+        
+    })
+};
+
 
 importContacts()
 addContactBtn()
+find()
