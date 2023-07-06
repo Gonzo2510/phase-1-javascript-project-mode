@@ -1,5 +1,7 @@
 // json-server --watch db.json
 
+
+
 function addContactToDOM(name, title, email, phone){
     const tbody = document.querySelector("tbody")
     const tr = document.createElement('tr')
@@ -7,16 +9,20 @@ function addContactToDOM(name, title, email, phone){
     const tb2 = document.createElement('td')
     const tb3 = document.createElement('td')
     const tb4 = document.createElement('td')
+    const tb5 = document.createElement('td')
 
     tb1.textContent = name
     tb2.textContent = title
     tb3.textContent = email
     tb4.textContent = phone
+    tb5.textContent = 'X'
+    tb5.className = 'invisible'
 
     tr.appendChild(tb1)
     tr.appendChild(tb2)
     tr.appendChild(tb3)
     tr.appendChild(tb4)
+    tr.appendChild(tb5)
     
     tbody.appendChild(tr)
 };
@@ -31,7 +37,7 @@ function importContacts(){
             let email = contact.email
             let phone = contact.phone
             addContactToDOM(name, title, email, phone)
-        });
+        })
     })
     .catch(error => {
         //handle error
@@ -74,8 +80,8 @@ function find(){
         e.preventDefault()
 
         let userSearch = e.target['0'].value
-        let tbody = document.querySelector('tbody')
-        let rows = tbody.querySelectorAll('tr')
+        const tbody = document.querySelector('tbody')
+        const rows = tbody.querySelectorAll('tr')
 
         for (let i = 0; i < rows.length; i++) {
             let name = rows[i].querySelector("td")
@@ -92,18 +98,29 @@ function clear(){
     clearBtn.addEventListener('click', (e)=> {
         e.preventDefault()
 
-        let tbody = document.querySelector('tbody')
-        let rows = tbody.querySelectorAll('tr')
+        const tbody = document.querySelector('tbody')
+        const rows = tbody.querySelectorAll('tr')
+        console.log(tbody, rows)
 
         for (let i = 0; i < rows.length; i++) {
-            let name = rows[i].querySelector("td")
             rows[i].className = ''
         }
 
     })
 };
 
+function removeAllContacts() {
+    const button = document.getElementById("remove")
+    button.addEventListener('mouseover', () => {
+        button.className = ''
+    })
+
+
+}
+
 importContacts()
 addContactBtn()
 find()
 clear()
+removeAllContacts()
+

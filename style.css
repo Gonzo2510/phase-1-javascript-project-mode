@@ -3,6 +3,10 @@
   display: none;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
   body {
       font-family: Arial, sans-serif;
     }
