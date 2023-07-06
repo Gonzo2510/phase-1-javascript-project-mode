@@ -72,7 +72,7 @@ function find(){
     let findForm = document.getElementById("find_form")
     findForm.addEventListener("submit", e => {
         e.preventDefault()
-        
+
         let userSearch = e.target['0'].value
         let tbody = document.querySelector('tbody')
         let rows = tbody.querySelectorAll('tr')
@@ -87,7 +87,23 @@ function find(){
     })
 };
 
+function clear(){
+    const clearBtn = document.getElementsByClassName('button')[0]
+    clearBtn.addEventListener('click', (e)=> {
+        e.preventDefault()
+
+        let tbody = document.querySelector('tbody')
+        let rows = tbody.querySelectorAll('tr')
+
+        for (let i = 0; i < rows.length; i++) {
+            let name = rows[i].querySelector("td")
+            rows[i].className = ''
+        }
+
+    })
+};
 
 importContacts()
 addContactBtn()
 find()
+clear()
