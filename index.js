@@ -90,6 +90,26 @@ function find(){
                 rows[i].className = 'hidden'
             } else rows[i].className = ''
         }
+        const button = document.getElementById("remove")
+        button.addEventListener('click', () => {
+
+            fetch('http://localhost:3000/contacts')
+            .then(response => response.json())
+            .then(contacts => {
+                contacts.forEach(contact => {
+                    let name = contact.name
+
+                    if (userSearch.toLowerCase() === name.toLowerCase()) {
+                        let contactId = contact.id
+
+
+
+
+
+                    }
+                })
+            })
+        })
     })
 };
 
@@ -121,8 +141,22 @@ function visibleButton() {
 
 function removeAllContacts() {
     const button = document.getElementById("remove")
-    button.addEventListener('submit', (e) => {
+    console.log(button)
+    
+    button.addEventListener('click', (e) => {
         e.preventDefault()
+        console.log(e)
+        //let userSearch = e.target['0'].value
+
+        fetch('http://localhost:3000/contacts')
+        .then(response => response.json())
+        .then(contacts => {
+            contacts.forEach(contact => {
+                let name = contact.name
+
+                console.log(name, userSearch)
+            })
+        })
 
         fetch('http://localhost:3000/contacts', {
             method: 'DELETE' 
@@ -134,7 +168,8 @@ function removeAllContacts() {
                 console.log("Error deleting data")
             }
           })
-};
+        })
+}
 
 
 
@@ -142,5 +177,4 @@ importContacts()
 addContactBtn()
 find()
 clear()
-visibleButton()
-removeAllContacts()
+//visibleButton()
