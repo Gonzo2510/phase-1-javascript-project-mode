@@ -75,7 +75,7 @@ function addContactBtn(){
 };
 
 function find(){
-    let findForm = document.getElementById("find_form")
+    const findForm = document.getElementById("find_form")
     findForm.addEventListener("submit", e => {
         e.preventDefault()
 
@@ -109,18 +109,38 @@ function clear(){
     })
 };
 
-function removeAllContacts() {
+function visibleButton() {
     const button = document.getElementById("remove")
-    button.addEventListener('mouseover', () => {
+    button.addEventListener('mouseenter', () => {
+        button.className = 'invisible'
+    })
+    button.addEventListener('mouseleave', () => {
         button.className = ''
     })
-
-
 }
+
+function removeAllContacts() {
+    const button = document.getElementById("remove")
+    button.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        fetch('http://localhost:3000/contacts', {
+            method: 'DELETE' 
+        })
+        .then(response => {
+            if (response.status === 200) {
+              console.log("Data deleted successfully")
+            } else {
+                console.log("Error deleting data")
+            }
+          })
+};
+
+
 
 importContacts()
 addContactBtn()
 find()
 clear()
+visibleButton()
 removeAllContacts()
-
