@@ -82,7 +82,7 @@ function find(){
         let userSearch = e.target['0'].value
         const tbody = document.querySelector('tbody')
         const rows = tbody.querySelectorAll('tr')
-
+        console.low(rows)
         for (let i = 0; i < rows.length; i++) {
             let name = rows[i].querySelector("td")
 
@@ -102,6 +102,11 @@ function find(){
                     if (userSearch.toLowerCase() === name.toLowerCase()) {
                         let contactId = contact.id
 
+                        fetch(`http://localhost:3000/contacts/${contactId}`, {method: 'DELETE'})
+                        .then(response => response.json())
+                        .then(data => {console.log(rows)
+                        
+                        })
 
 
 
