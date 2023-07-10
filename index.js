@@ -82,7 +82,7 @@ function find(){
         let userSearch = e.target['0'].value
         const tbody = document.querySelector('tbody')
         const rows = tbody.querySelectorAll('tr')
-        console.low(rows)
+        //console.log(rows)
         for (let i = 0; i < rows.length; i++) {
             let name = rows[i].querySelector("td")
 
@@ -104,13 +104,13 @@ function find(){
 
                         fetch(`http://localhost:3000/contacts/${contactId}`, {method: 'DELETE'})
                         .then(response => response.json())
-                        .then(data => {console.log(rows)
-                        
+                        .then(data => {
+                            console.log(tbody)
+                            for (let i = 0; i < rows.length; i++) {
+                                rows[i].remove()
+                            }
+                        importContacts()
                         })
-
-
-
-
                     }
                 })
             })

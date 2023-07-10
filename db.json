@@ -20,20 +20,6 @@
       "email": "Jessie@email.com",
       "phone": "8324448888",
       "id": 3
-    },
-    {
-      "name": "Aaron",
-      "occupation": "Student",
-      "email": "Aaron@student.com",
-      "phone": "3888388883",
-      "id": 4
-    },
-    {
-      "name": "Dummy",
-      "occupation": "2",
-      "email": "2@2",
-      "phone": "2",
-      "id": 5
     }
   ]
 }
