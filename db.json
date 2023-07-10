@@ -1,3 +1,18 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "Aaron",
+      "occupation": "Student",
+      "email": "Aaron@email.com",
+      "phone": "7897987987",
+      "id": 1
+    },
+    {
+      "name": "Joe",
+      "occupation": "Accountant",
+      "email": "Joe@email.com",
+      "phone": "321321321",
+      "id": 2
+    }
+  ]
 }
