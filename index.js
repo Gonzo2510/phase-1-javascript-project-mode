@@ -134,16 +134,20 @@ function clear(){
     })
 };
 
-function visibleButton() {
+function invisibleButton() {
     const button = document.getElementById("remove")
-    button.addEventListener('mouseenter', () => {
-        button.className = 'invisible'
-    })
-    button.addEventListener('mouseleave', () => {
+    const form = document.getElementById('find_form')
+    //button.className = ''
+    form.addEventListener('mouseenter', () => {
         button.className = ''
+    })
+
+    button.addEventListener('mouseleave', () => {
+        button.className = 'invisible'
     })
 }
 
+/*
 function removeAllContacts() {
     const button = document.getElementById("remove")
     console.log(button)
@@ -175,11 +179,10 @@ function removeAllContacts() {
           })
         })
 }
-
-
+ */
 
 importContacts()
 addContactBtn()
 find()
 clear()
-//visibleButton()
+invisibleButton()
