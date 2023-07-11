@@ -71,6 +71,12 @@ function addContactBtn(){
         })
         .then(response => response.json())
         .then(user => addContactToDOM(fName,fTitle,fEmail,fPhone))
+
+        // clear form values
+        let field = form.querySelectorAll("input")
+        for (let i = 0; i < 4; i++) {
+            field[i].value = ''
+        }
     })
 };
 
@@ -82,7 +88,7 @@ function find(){
         let userSearch = e.target['0'].value
         const tbody = document.querySelector('tbody')
         const rows = tbody.querySelectorAll('tr')
-        //console.log(rows)
+
         for (let i = 0; i < rows.length; i++) {
             let name = rows[i].querySelector("td")
 
@@ -105,7 +111,7 @@ function find(){
                         fetch(`http://localhost:3000/contacts/${contactId}`, {method: 'DELETE'})
                         .then(response => response.json())
                         .then(data => {
-                            console.log(tbody)
+                            console.log(data,tbody)
                             for (let i = 0; i < rows.length; i++) {
                                 rows[i].remove()
                             }
@@ -118,14 +124,13 @@ function find(){
     })
 };
 
-function clear(){
+function clearSearch(){
     const clearBtn = document.getElementsByClassName('button')[0]
     clearBtn.addEventListener('click', (e)=> {
         e.preventDefault()
 
         const tbody = document.querySelector('tbody')
         const rows = tbody.querySelectorAll('tr')
-        console.log(tbody, rows)
 
         for (let i = 0; i < rows.length; i++) {
             rows[i].className = ''
@@ -135,54 +140,55 @@ function clear(){
 };
 
 function invisibleButton() {
-    const button = document.getElementById("remove")
+    const button = document.getElementById("remove_all")
     const form = document.getElementById('find_form')
-    //button.className = ''
+
+    //make remove all button visable
     form.addEventListener('mouseenter', () => {
         button.className = ''
     })
 
-    button.addEventListener('mouseleave', () => {
+    //make remove all button invisible
+    form.addEventListener('mouseleave', () => {
         button.className = 'invisible'
     })
 }
 
-/*
 function removeAllContacts() {
-    const button = document.getElementById("remove")
-    console.log(button)
+    const button = document.getElementById("remove_all")
     
     button.addEventListener('click', (e) => {
         e.preventDefault()
-        console.log(e)
-        //let userSearch = e.target['0'].value
+        const tbody = document.querySelector('tbody')
+        const rows = tbody.querySelectorAll('tr')
 
+        //get names for delete fetch url
         fetch('http://localhost:3000/contacts')
         .then(response => response.json())
         .then(contacts => {
             contacts.forEach(contact => {
-                let name = contact.name
+                let name = contact.id
 
-                console.log(name, userSearch)
+                //delete elements from db.json
+                fetch(`http://localhost:3000/contacts/${name}`, {method: 'DELETE'})
+                .then(response => response.json())
+                .then(data => {
+
+                    //delete elements from dom
+                    for (let i = 0; i < rows.length; i++) {
+                        let deleteElement = document.querySelector(`body > table > tbody > tr:nth-child(1)`)
+                        let parent = deleteElement.parentNode
+                        parent.removeChild(deleteElement)
+                        }
+                })
             })
         })
-
-        fetch('http://localhost:3000/contacts', {
-            method: 'DELETE' 
-        })
-        .then(response => {
-            if (response.status === 200) {
-              console.log("Data deleted successfully")
-            } else {
-                console.log("Error deleting data")
-            }
-          })
-        })
+    })
 }
- */
 
 importContacts()
 addContactBtn()
 find()
-clear()
+clearSearch()
 invisibleButton()
+removeAllContacts()
